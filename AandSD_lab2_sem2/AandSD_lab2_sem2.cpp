@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <vector>
+#include <time.h>
+#include <fstream>
 
 struct stats {
 	size_t comparison_count = 0;
@@ -44,11 +46,20 @@ stats shell_sort(std::vector<int>& data) {
 }
 
 int main() {
-	std::vector<int> test = { 5, 4, 12, 6, 2, 7, 18};
-	stats result = shell_sort(test);
-	std::cout << result.comparison_count << std::endl;
-	std::cout << result.copy_count << std::endl;
+	std::vector<int> test = { 5, 4, 12, 6, 2, 7, 18 };
+	std::vector<int> test2 = { 5, 4, 12, 6, 2, 7, 18 };
+	stats result1 = inserts_sort(test);
+	std::cout << result1.comparison_count << std::endl;
+	std::cout << result1.copy_count << std::endl;
 	for (auto i = test.begin(); i != test.end(); ++i) {
-		std::cout << *i << std::endl;
+		std::cout << *i << " ";
+	}
+	std::cout << std::endl;
+	stats result2 = shell_sort(test2);
+	std::cout << result2.comparison_count << std::endl;
+	std::cout << result2.copy_count << std::endl;
+	for (auto i = test.begin(); i != test.end(); ++i) {
+		std::cout << *i << " ";
 	}
 }
+
